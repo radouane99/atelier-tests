@@ -2,6 +2,7 @@ const express = require('express');
 const db = require('./db');
 
 const app = express();
+
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -22,6 +23,16 @@ app.get('/users/:id', async (req, res) => {
   }
 
   return res.json(rows[0]);
+});
+
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  if (email === 'a@test.fr' && password === 'secret') {
+    return res.sendStatus(200);
+  }
+
+  return res.sendStatus(401);
 });
 
 module.exports = app;
