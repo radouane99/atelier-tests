@@ -7,6 +7,7 @@
     "test": "jest",
     "start": "node src/server.js",
     "test:unit": "jest tests/unit --coverage",
+    "test:cov": "jest --runInBand --coverage",
     "test:int": "jest tests/integration --runInBand",
     "test:e2e": "playwright test"
   },

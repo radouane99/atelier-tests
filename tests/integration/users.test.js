@@ -15,6 +15,11 @@ afterAll(async () => {
 });
 
 describe('GET /users/:id', () => {
+  test('ne divulgue pas la technologie du serveur', async () => {
+    const res = await request(app).get('/users/1');
+    expect(res.headers['x-powered-by']).toBeUndefined();
+  });
+
   test('retourne 200 et Alice pour un utilisateur existant', async () => {
     const res = await request(app).get('/users/1');
     expect(res.status).toBe(200);
